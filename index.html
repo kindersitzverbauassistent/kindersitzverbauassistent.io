@@ -1,17 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Title of the document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic One-Page Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .cta-button:hover {
+      background-color: #0056b3;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
-
- 
-
 <body>
+  <div class="container">
+    <h1>Welcome to My Dynamic Website</h1>
+    <p>This is a one-page website created using HTML, CSS, and JavaScript. Sections will appear based on your input.</p>
+    <button onclick="showSection('section1')">Show Section 1</button>
+    <button onclick="showSection('section2')">Show Section 2</button>
+    <div id="section1" class="hidden">
+      <h2>Section 1</h2>
+      <p>This is the content of Section 1.</p>
+      <!-- Embedded YouTube video -->
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id_here" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="section2" class="hidden">
+      <h2>Section 2</h2>
+      <p>This is the content of Section 2.</p>
+    </div>
+    <a href="https://www.example.com" class="cta-button">Learn More</a>
+  </div>
 
-Andis Kindersitz Verbau Assistent
-
+  <script>
+    function showSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.classList.toggle('hidden');
+      }
+    }
+  </script>
 </body>
- 
-
 </html>
+
