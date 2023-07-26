@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+    crossorigin="anonymous"></script>
   <title>Kindersitz Verbau Assistent</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
       max-width: 800px;
+      width: 100%;
       margin: 0 auto;
       padding: 20px;
     }
@@ -23,6 +33,13 @@
 
     .container {
       text-align: center;
+    }
+
+    .spinner-container {
+      height: 100vh;
+      align-items: center;
+      display: flex;
+      justify-content: center;
     }
 
     .cta-button {
@@ -42,95 +59,247 @@
     .hidden {
       display: none;
     }
+
     .section {
-            display: none;
-        }
-        .visible {
-            display: block;
-        }
-        .active {
-            background-color: yellow;
-        }
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    .active {
+      background-color: yellow;
+    }
+
+    .m-b-rem {
+      margin-bottom: 1rem;
+    }
+
+    .m-t-rem {
+      margin-top: 1rem;
+    }
+
+    iframe {
+      max-width: 100% !important;
+      width: 560px !important;
+      height: 316px !important;
+    }
   </style>
 </head>
+
 <body>
-  <div class="container">
+  <div class="spinner-container" id="spinner">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div class="container hidden" id="main">
     <h1>BMW und Osann Kindersitz Verbau Assistent</h1>
-    <p>Es wurde ein neuer Kindersitz der Marks Osann in Ihrem BMW auf dem Beifahrersitz erkannt</p>
-    <img src="Kindersitz_Zulassungnummer_uebersicht.png" alt="Osann xy"
-    width="400" 
-    height="500" 
-        >
-    <p>Benötigen Sie Hilfe beim korrekten Verbau des Sitzes um Ihr Kind optimal bei einem potenziellen Crash zu schützen?</p>
-    <button onclick="showSection('section1')">Ja bitte</button>
-    <button onclick="showSection('section2')">Nein danke</button>
-    <div id="section1" class="hidden">
-      <h2>Verbauassistent</h2>
-      <p>Wie alt ist Ihr Kind?</p>
-      <button onclick="showSection('section3')">Jünger als 15 Monate</button>
-      <button onclick="showSection('section4')">Älter als 15 Monate</button>
-      <div id="section3" class="hidden">
-        <p>Sie sollten den Sitz für dieses Alter rückwärtsgewandt verbauen. Achten Sie bei Verbau auf der Ersten Sitzreihe darauf den Beifahrerairbag zu deaktivieren</p>
-              <!-- Embedded YouTube video -->
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div id="section4" class="hidden">
-        <p>Ob Sie den Sitz vorwärts oder rückwärtsgewandt verbauen sollten ist von der Größe Ihres Kindes abhängig</p>
-        <button onclick="showSection('section5')">Mein Kind ist kleiner als 76cm</button>
-        <button onclick="showSection('section6')">mein Kind ist zwischen 76 und 105 cm groß</button>
-        <button onclick="showSection('section7')">Mein Kind ist zwischen 105 und 150 cm groß</button>
-              <!-- Embedded YouTube video -->
-      <div id="section5" class="hidden">
-        <p>Sie sollten den Sitz für diese Größe auf jeden Fall rückwärtsgewandt verbauen. Achten Sie bei Verbau auf der Ersten Sitzreihe darauf den Beifahrerairbag zu deaktiviern</p>
-              <!-- Embedded YouTube video -->
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div id="section6" class="hidden">
-        <p>Sie können den Sitz für diese Größe wahlweise vorwärts oder rüchkwärtsgerichtet verbauen. Kleinere kinder sollten vozugsweise rückwärtsgewandt sitzen</p>
-        <button onclick="showSection('section8')">Ich möchte rückwärtsgewandt verbauen</button>
-        <button onclick="showSection('section9')">Ich möchte vorwärtsgewandt verbauen</button>
+    <div class="collapse show" id="imageCollapse">
+      <p>Es wurde ein neuer Kindersitz der Marks Osann in Ihrem BMW auf dem Beifahrersitz erkannt</p>
+      <img src="Kindersitz_Zulassungnummer_uebersicht.png" alt="Osann xy" width="400" height="500">
+    </div>
+    <p>Benötigen Sie Hilfe beim korrekten Verbau des Sitzes um Ihr Kind optimal bei einem potenziellen Crash zu
+      schützen?</p>
 
-        <div id="section8" class="hidden">
-          <p>Anleitung für rückwärtgewandten Verbau: Achten Sie bei Verbau auf der Ersten Sitzreihe darauf den Beifahrerairbag zu deaktivieren</p>
-          <!-- Embedded YouTube video -->
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div> 
+    <div class="btn-group w-100 m-b-rem" role="group" aria-label="Basic radio toggle button group">
+      <input onclick="showYes()" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btnradio1">Ja</label>
 
-        <div id="section9" class="hidden">
-          <p>Anleitung für vorwärtsgewandten Verbau</p>
-          <!-- Embedded YouTube video -->
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div> 
-
-      </div>    
-      <div id="section7" class="hidden">
-        <p>Anleitung für vorwärtsgewandten Verbau</p>
-        <!-- Embedded YouTube video -->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      
-      </div>   
+      <input onclick="showNo()" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btnradio2">Nein</label>
     </div>
 
+    <div class="collapse" id="yesCollapse">
+      <div class="card card-body">
+        <select onchange="selectAge(this.selectedIndex)" class="form-select" aria-label="Default select example">
+          <option value="" disabled selected>Wie alt ist Ihr Kind?</option>
+          <option value="young">Mein Kind ist jünger als 15 Monate</option>
+          <option value="old">Mein Kind ist älter als 15 Monate</option>
+        </select>
+
+        <div class="collapse m-t-rem" id="youngCollapse">
+          <p>Sie sollten den Sitz für dieses Alter rückwärtsgewandt verbauen. Achten Sie bei Verbau auf der Ersten
+            Sitzreihe darauf den Beifahrerairbag zu deaktivieren</p>
+          <!-- Embedded YouTube video -->
+          <iframe src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <div class="collapse m-t-rem" id="oldCollapse">
+          <select onchange="selectSize(this.selectedIndex)" class="form-select" aria-label="Default select example">
+            <option value="" disabled selected>Wie groß ist Ihr Kind?</option>
+            <option value="small">Mein Kind ist kleiner als 76cm</option>
+            <option value="medium">mein Kind ist zwischen 76 und 105 cm groß</option>
+            <option value="large">Mein Kind ist zwischen 105 und 150 cm groß</option>
+          </select>
+
+          <div class="collapse m-t-rem" id="smallCollapse">
+            <p>Sie sollten den Sitz für diese Größe auf jeden Fall rückwärtsgewandt verbauen. Achten Sie bei Verbau auf
+              der Ersten Sitzreihe darauf den Beifahrerairbag zu deaktiviern</p>
+            <!-- Embedded YouTube video -->
+            <iframe src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+          <div class="collapse m-t-rem" id="mediumCollapse">
+            <select onchange="selectDirection(this.selectedIndex)" class="form-select"
+              aria-label="Default select example">
+              <option value="" disabled selected>Wie möchten Sie den Sitz verbauen?</option>
+              <option value="small">Ich möchte rückwärtsgewandt verbauen</option>
+              <option value="medium">Ich möchte vorwärtsgewandt verbauen</option>
+            </select>
+
+            <div class="collapse m-t-rem" id="frontCollapse">
+              <p>Anleitung für vorwärtsgewandten Verbau</p>
+              <!-- Embedded YouTube video -->
+              <iframe src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+
+            <div class="collapse m-t-rem" id="backCollapse">
+              <p>Anleitung für rückwärtgewandten Verbau: Achten Sie bei Verbau auf der Ersten Sitzreihe darauf den
+                Beifahrerairbag zu deaktivieren</p>
+              <!-- Embedded YouTube video -->
+              <iframe src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="collapse m-t-rem" id="largeCollapse">
+            <p>Anleitung für vorwärtsgewandten Verbau</p>
+            <!-- Embedded YouTube video -->
+            <iframe src="https://www.youtube.com/embed/zoFn9g1ISkc" title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+      </div>
     </div>
-    <div id="section2" class="hidden">
-      <h2>Wir wünschen Ihnen eine gute und sichere Fahrt!</h2>
-      <p>Bitte vergessen Sie nicht den Beifahrerairbag zu deaktivieren wenn Sie den Sitz rückwärtsgewandt auf den Beifahrersitz eingebaut haben</p>
-      <input type="button" value="schliessen" onclick="self.close()">
+
+    <div class="collapse" id="noCollapse">
+      <div class="card card-body">
+        <h2>Wir wünschen Ihnen eine gute und sichere Fahrt!</h2>
+        <p>Bitte vergessen Sie nicht den Beifahrerairbag zu deaktivieren wenn Sie den Sitz rückwärtsgewandt auf den
+          Beifahrersitz eingebaut haben</p>
+        <button type="button" class="btn btn-primary" onclick="self.close()">Beenden</button>
+      </div>
+    </div>
+
   </div>
 
-  <script>
-    function showSection(sectionId) {
-      const section = document.getElementById(sectionId);
-      const buttons = document.getElementsByTagName('button');
 
-      if (section) {
-        section.classList.toggle('hidden');
-      }
-    }
-    function windowClose(){
+  <script>
+    var imageCollapse, yesCollapse, noCollapse, youngCollapse, oldCollapse, smallCollapse, mediumCollapse, largeCollapse, frontCollapse, backCollapse;
+    const SELECTED_INDEX_YOUNG = 1, SELECTED_INDEX_OLD = 2,
+      SELECTED_INDEX_SMALL = 1, SELECTED_INDEX_MEDIUM = 2, SELECTED_INDEX_LARGE = 3,
+      SELECTED_INDEX_FRONT = 2, SELECTED_INDEX_BACK = 1;
+
+    function windowClose() {
       window.close();
     }
+
+    const showYes = () => {
+      yesCollapse.show();
+      imageCollapse.hide();
+      noCollapse.hide();
+    }
+
+    const showNo = () => {
+      yesCollapse.hide();
+      imageCollapse.hide();
+      noCollapse.show();
+    }
+
+    const selectAge = (selectedIndex) => {
+      if (selectedIndex === SELECTED_INDEX_YOUNG) {
+        youngCollapse.show();
+        oldCollapse.hide();
+      } else if (selectedIndex === SELECTED_INDEX_OLD) {
+        youngCollapse.hide();
+        oldCollapse.show();
+      } else {
+        youngCollapse.hide();
+        oldCollapse.hide();
+      }
+    }
+
+    const selectSize = (selectedIndex) => {
+      if (selectedIndex === SELECTED_INDEX_SMALL) {
+        smallCollapse.show();
+        mediumCollapse.hide();
+        largeCollapse.hide();
+      } else if (selectedIndex === SELECTED_INDEX_MEDIUM) {
+        smallCollapse.hide();
+        mediumCollapse.show();
+        largeCollapse.hide();
+      } else if (selectedIndex === SELECTED_INDEX_LARGE) {
+        smallCollapse.hide();
+        mediumCollapse.hide();
+        largeCollapse.show();
+      } else {
+        smallCollapse.hide();
+        mediumCollapse.hide();
+        largeCollapse.hide();
+      }
+    }
+
+    const selectDirection = (selectedIndex) => {
+      if (selectedIndex === SELECTED_INDEX_FRONT) {
+        frontCollapse.show();
+        backCollapse.hide();
+      } else if (selectedIndex === SELECTED_INDEX_BACK) {
+        frontCollapse.hide();
+        backCollapse.show();
+      } else {
+        frontCollapse.hide();
+        backCollapse.hide();
+      }
+    }
+
+    document.onreadystatechange = function () {
+      if (document.readyState == "complete") {
+        yesCollapse = new bootstrap.Collapse('#yesCollapse', {
+          toggle: false
+        })
+        noCollapse = new bootstrap.Collapse('#noCollapse', {
+          toggle: false
+        })
+        imageCollapse = new bootstrap.Collapse('#imageCollapse', {
+          toggle: false
+        })
+        youngCollapse = new bootstrap.Collapse('#youngCollapse', {
+          toggle: false
+        })
+        oldCollapse = new bootstrap.Collapse('#oldCollapse', {
+          toggle: false
+        })
+        smallCollapse = new bootstrap.Collapse('#smallCollapse', {
+          toggle: false
+        })
+        mediumCollapse = new bootstrap.Collapse('#mediumCollapse', {
+          toggle: false
+        })
+        largeCollapse = new bootstrap.Collapse('#largeCollapse', {
+          toggle: false
+        })
+        frontCollapse = new bootstrap.Collapse('#frontCollapse', {
+          toggle: false
+        })
+        backCollapse = new bootstrap.Collapse('#backCollapse', {
+          toggle: false
+        })
+        document.getElementById('spinner').classList.add('hidden');
+        document.getElementById('main').classList.remove('hidden');
+      }
+    }
+
   </script>
 </body>
-</html>
 
+</html>
